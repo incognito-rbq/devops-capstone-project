@@ -1,3 +1,4 @@
+```text
 **Customer Accounts Microservice**                                                                                                                                         
 ├── **Agile Planning & Management**
 │   ├── GitHub Kanban board and product backlog initialization
@@ -15,4 +16,4 @@
 │   └── PostgreSQL backend service provisioning
 └── **Continuous Delivery Pipeline**
     └── Tekton CD pipeline configuration for automated, zero-touch Kubernetes deployments
-    
+```
