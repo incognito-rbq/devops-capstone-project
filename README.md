@@ -1,4 +1,4 @@
-**Customer Accounts Microservice                                                                                                                                          
+**Customer Accounts Microservice**                                                                                                                                         
 ├── **Agile Planning & Management**
 │   ├── GitHub Kanban board and product backlog initialization
 │   └── Sprint planning, user story generation, and estimation
@@ -15,3 +15,4 @@
 │   └── PostgreSQL backend service provisioning
 └── **Continuous Delivery Pipeline**
     └── Tekton CD pipeline configuration for automated, zero-touch Kubernetes deployments
+    
