@@ -1,4 +1,4 @@
-**Customer Accounts Microservice**
+**Customer Accounts Microservice                                                                                                                                          
 ├── **Agile Planning & Management**
 │   ├── GitHub Kanban board and product backlog initialization
 │   └── Sprint planning, user story generation, and estimation
