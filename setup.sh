@@ -3,14 +3,20 @@ echo "****************************************"
 echo " Setting up Capstone Environment"
 echo "****************************************"
 
-echo "Installing Python 3.9 and Virtual Environment"
+echo "Adding Python repository and installing Python 3.9..."
 sudo apt-get update
-sudo DEBIAN_FRONTEND=noninteractive apt-get install -y python3.9 python3.9-venv
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y software-properties-common
+# Add the deadsnakes PPA to get access to Python 3.9
+sudo add-apt-repository -y ppa:deadsnakes/ppa
+sudo apt-get update
+
+# Now we can successfully install Python 3.9 and its modules
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y python3.9 python3.9-venv python3.9-distutils
 
 echo "Checking the Python version..."
 python3.9 --version
 
-echo "Creating a Python virtual environment"
+echo "Creating a Python virtual environment..."
 python3.9 -m venv ~/venv
 
 echo "Configuring the developer environment..."
@@ -20,8 +26,13 @@ echo 'export PS1="\[\e]0;\u:\W\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32
 echo "source ~/venv/bin/activate" >> ~/.bashrc
 
 echo "Installing Python dependencies..."
-source ~/venv/bin/activate && python3.9 -m pip install --upgrade pip wheel
-source ~/venv/bin/activate && pip install -r requirements.txt
+~/venv/bin/python3.9 -m pip install --upgrade pip wheel
+
+if [ -f "requirements.txt" ]; then
+    ~/venv/bin/pip install -r requirements.txt
+else
+    echo "Warning: requirements.txt not found in the current directory. Skipping."
+fi
 
 echo "Starting the Postgres Docker container..."
 make db
@@ -34,4 +45,3 @@ echo " Capstone Environment Setup Complete"
 echo "****************************************"
 echo ""
 echo "Use 'exit' to close this terminal and open a new one to initialize the environment"
-echo ""
