@@ -1,0 +1,43 @@
+name: ci-build
+on:
+  push:
+    branches:
+      project
+      dev
+  pull-request:
+    branches:
+        dev
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: python:3.9-slim
+    services:
+      postgress:
+        image:
+        ports:
+		       - 5432:5432
+		    env:
+		    POSTGRES_PASSWORD: pgs3cr3t
+		    POSTGRES_DB: testdb
+		    options: >-
+		       --health-cmd pg_isready
+		       --health-interval 10s
+		       --health-timeout 5s
+		       --health-retries 5
+    steps:
+      name:
+      uses:
+
+      name:
+      uses:
+
+      name:
+      uses:
+
+      name:
+      uses:
+      
+
+      
+
+
